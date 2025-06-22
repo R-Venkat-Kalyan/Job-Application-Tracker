@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>All Applied Jobs - JobTrackrly</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="assets/img/favicon.png" rel="icon" />
+</head>
+
+<body class="bg-gray-100 text-gray-900">
+  <!-- Table Container -->
+  <div class="max-w-6xl mx-auto p-6">
+    <div class="bg-white shadow-md rounded-lg overflow-hidden">
+      <!-- Centered Header -->
+      <div class="px-6 py-4 text-center">
+        <h2 class="text-2xl font-bold text-indigo-700">All Applied Jobs</h2>
+        <p class="text-gray-600 mt-2">Here’s a list of all your job applications logged in JobTrackrly.</p>
+      </div>
+
+      <div class="overflow-x-auto">
+        <table class="min-w-full bg-white border border-gray-200">
+          <thead>
+            <tr class="bg-indigo-600 text-white text-sm">
+              <th class="py-2 px-2 border border-gray-200 text-center">S.No</th>
+              <th class="py-2 px-4 border border-gray-200 text-left">Company Name</th>
+              <th class="py-2 px-4 border border-gray-200 text-left">Role</th>
+              <th class="py-2 px-4 border border-gray-200 text-left">Link</th>
+              <th class="py-2 px-4 border border-gray-200 text-left">CTC (LPA)</th>
+              <th class="py-2 px-4 border border-gray-200 text-left">Resume Used</th>
+              <th class="py-2 px-4 border border-gray-200 text-left">Date Applied</th>
+            </tr>
+          </thead>
+
+          <tbody>
+            <tr th:each="job, stat : ${jobs}" class="hover:bg-gray-50 text-sm">
+              <td class="py-2 px-2 border border-gray-200 text-center" th:text="${stat.index + 1}"></td>
+              <td class="py-2 px-4 border border-gray-200" th:text="${job.companyName}"></td>
+              <td class="py-2 px-4 border border-gray-200" th:text="${job.roleName}"></td>
+              <td class="py-2 px-4 border border-gray-200">
+                <a th:href="${job.applicationLink}" target="_blank" class="text-blue-600 underline">View</a>
+              </td>
+              <td class="py-2 px-4 border border-gray-200" th:text="${job.expectedCtc}"></td>
+              <td class="py-2 px-4 border border-gray-200">
+                <a th:href="@{/uploads/{file}(file=${job.resumeFileName})}" target="_blank" class="text-green-600 underline">Resume</a>
+              </td>
+              <td class="py-2 px-4 border border-gray-200" th:text="${job.dateApplied}"></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>

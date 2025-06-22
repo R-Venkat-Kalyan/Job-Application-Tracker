@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -12,18 +11,16 @@
     .brand-color {
       color: #88f572;
     }
-
     .bg-brand {
       background-color: #88f572;
     }
-
     .hover-bg-brand:hover {
       background-color: #76e55b;
     }
   </style>
 </head>
 
-<body class="flex flex-col w-screen h-screen bg-gray-100">
+<body class="bg-gray-100 text-gray-900 overflow-hidden">
 
   <!-- Navbar -->
   <nav class="bg-gray-900 fixed w-full z-20 top-0 border-b border-gray-600">
@@ -35,57 +32,54 @@
     </div>
   </nav>
 
-  <!-- Sidebar and Main Content -->
-  <div class="flex flex-row mt-16 h-full">
-    <aside class="w-56 bg-gray-900 text-gray-200 p-4 space-y-2">
+  <!-- Page Layout -->
+  <div class="flex">
+    
+    <!-- Sidebar -->
+    <aside class="fixed top-16 left-0 w-56 bg-gray-900 text-gray-200 h-[calc(100vh-4rem)] flex flex-col justify-between p-4">
+      
+      <!-- Links -->
+      <div class="space-y-2 text-sm font-semibold">
+        <a href="/dashboard" class="flex items-center px-5 py-3 rounded-lg hover:bg-gray-800">
+          <i class="fa-solid fa-chart-line mr-3 w-5"></i> Dashboard
+        </a>
+        <a href="/add-job" class="flex items-center px-5 py-3 rounded-lg hover:bg-gray-800">
+          <i class="fa-solid fa-plus-circle mr-3 w-5"></i> Add New Job
+        </a>
+        <a href="/applied-jobs" class="flex items-center px-5 py-3 rounded-lg hover:bg-gray-800">
+          <i class="fa-solid fa-list-check mr-3 w-5"></i> All Applied Jobs
+        </a>
+        <a href="/shortlisted" class="flex items-center px-5 py-3 rounded-lg hover:bg-gray-800">
+          <i class="fa-solid fa-check-circle mr-3 w-5"></i> Shortlisted Jobs
+        </a>
+        <a href="/rejected" class="flex items-center px-5 py-3 rounded-lg hover:bg-gray-800">
+          <i class="fa-solid fa-xmark-circle mr-3 w-5"></i> Rejected Jobs
+        </a>
+        <a href="/no-update" class="flex items-center px-5 py-3 rounded-lg hover:bg-gray-800">
+          <i class="fa-solid fa-question-circle mr-3 w-5"></i> No Update Jobs
+        </a>
+        <a href="/update-profile" class="flex items-center px-5 py-3 rounded-lg hover:bg-gray-800">
+          <i class="fa-solid fa-user-gear mr-3 w-5"></i> Update Profile
+        </a>
+      </div>
 
-      <a href="/dashboard" class="block w-full px-5 py-3 font-semibold rounded-lg hover:bg-gray-800 transition">
-        <i class="fa-solid fa-chart-line mr-3"></i> Dashboard
-      </a>
-
-      <a href="/add-job" class="block w-full px-5 py-3 font-semibold rounded-lg hover:bg-gray-800 transition">
-        <i class="fa-solid fa-plus-circle mr-3"></i> Add New Job
-      </a>
-
-      <a href="/applied-jobs" class="block w-full px-5 py-3 font-semibold rounded-lg hover:bg-gray-800 transition">
-        <i class="fa-solid fa-list-check mr-3"></i> All Applied Jobs
-      </a>
-
-      <a href="/shortlisted" class="block w-full px-5 py-3 font-semibold rounded-lg hover:bg-gray-800 transition">
-        <i class="fa-solid fa-check-circle mr-3"></i> Shortlisted Jobs
-      </a>
-
-      <a href="/rejected" class="block w-full px-5 py-3 font-semibold rounded-lg hover:bg-gray-800 transition">
-        <i class="fa-solid fa-xmark-circle mr-3"></i> Rejected Jobs
-      </a>
-
-      <a href="/no-update" class="block w-full px-5 py-3 font-semibold rounded-lg hover:bg-gray-800 transition">
-        <i class="fa-solid fa-question-circle mr-3"></i> No Update Jobs
-      </a>
-
-      <a href="/update-profile" class="block w-full px-5 py-3 font-semibold rounded-lg hover:bg-gray-800 transition">
-        <i class="fa-solid fa-user-gear mr-3"></i> Update Profile
-      </a>
-
-      <!-- Feedback Link -->
-      <div class="w-full mt-24">
-        <a class="relative flex items-center w-full h-12 px-3 rounded-lg bg-gradient-to-r from-blue-500 to-green-500 text-white font-bold shadow-md hover:shadow-xl transition-transform transform hover:scale-105"
-          href="/feedback">
-          <i class="fa-solid fa-comment w-6 h-6"></i>
-          <span class="ml-2 text-sm font-medium">Feedback</span>
-          <span
-            class="absolute top-0 right-0 mt-1 mr-1 bg-red-500 text-white text-xs font-bold px-2 py-1 rounded-full animate-bounce">New!</span>
+      <!-- Feedback Button -->
+      <div class="pt-6">
+        <a href="/feedback"
+           class="flex items-center px-5 py-3 rounded-lg bg-gradient-to-r from-blue-500 to-green-500 text-white font-bold shadow-md hover:shadow-xl hover:scale-105 transition-transform relative whitespace-nowrap">
+          <i class="fa-solid fa-comment-dots mr-3 w-5 text-base"></i> Feedback
+          <span class="absolute top-1 right-2 bg-red-600 text-white text-xs font-bold px-2 py-0.5 rounded-full animate-bounce">New!</span>
         </a>
       </div>
     </aside>
 
-
-    <!-- Main Content -->
-    <main class="flex-grow ml-56 p-6 bg-white">
-      <div th:replace="${mainContent}"></div>
+    <!-- Main Content Wrapper -->
+    <main class="ml-56 mt-16 w-full max-h-[calc(100vh-4rem)] overflow-y-auto p-6">
+      <div class="max-w-4xl mx-auto">
+        <div th:replace="${mainContent}"></div>
+      </div>
     </main>
+
   </div>
-
 </body>
-
 </html>

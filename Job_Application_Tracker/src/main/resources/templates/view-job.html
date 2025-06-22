@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>View Job</title>
+</head>
+<body>
+<div class="bg-white shadow-xl rounded-lg p-8 space-y-6">
+  <div class="text-center">
+    <h1 class="text-3xl font-bold text-indigo-700">Job Application Details</h1>
+    <p class="text-gray-500 mt-2">Here’s everything you logged for this job</p>
+  </div>
+
+  <!-- Company Name & Role -->
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+    <div>
+      <label class="block text-sm font-medium text-gray-700">Company Name</label>
+      <input type="text" th:value="${job.companyName}" disabled
+        class="mt-1 w-full px-4 py-3 border border-gray-200 bg-gray-100 rounded-md">
+    </div>
+    <div>
+      <label class="block text-sm font-medium text-gray-700">Role</label>
+      <input type="text" th:value="${job.roleName}" disabled
+        class="mt-1 w-full px-4 py-3 border border-gray-200 bg-gray-100 rounded-md">
+    </div>
+  </div>
+
+  <!-- Role Type & Platform -->
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+    <div>
+      <label class="block text-sm font-medium text-gray-700">Role Type</label>
+      <input type="text" th:value="${job.roleType}" disabled
+        class="mt-1 w-full px-4 py-3 border border-gray-200 bg-gray-100 rounded-md">
+    </div>
+    <div>
+      <label class="block text-sm font-medium text-gray-700">Platform Used</label>
+      <input type="text" th:value="${job.platformUsed}" disabled
+        class="mt-1 w-full px-4 py-3 border border-gray-200 bg-gray-100 rounded-md">
+    </div>
+  </div>
+
+  <!-- Link & CTC -->
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+    <div>
+      <label class="block text-sm font-medium text-gray-700">Application Link</label>
+      <a th:href="${job.applicationLink}" target="_blank"
+        class="inline-block mt-1 text-blue-600 underline break-all">View Link</a>
+    </div>
+    <div>
+      <label class="block text-sm font-medium text-gray-700">Expected CTC (LPA)</label>
+      <input type="text" th:value="${job.expectedCtc}" disabled
+        class="mt-1 w-full px-4 py-3 border border-gray-200 bg-gray-100 rounded-md">
+    </div>
+  </div>
+
+  <!-- Resume & Date -->
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+    <div>
+      <label class="block text-sm font-medium text-gray-700">Resume Used</label>
+      <a th:href="@{'/resume/' + ${job.id}}" target="_blank"
+        class="inline-block mt-1 text-green-600 underline">Download/View Resume</a>
+    </div>
+    <div>
+      <label class="block text-sm font-medium text-gray-700">Date Applied</label>
+      <input type="text" th:value="${job.dateApplied}" disabled
+        class="mt-1 w-full px-4 py-3 border border-gray-200 bg-gray-100 rounded-md">
+    </div>
+  </div>
+
+  <!-- Job Description -->
+  <div>
+    <label class="block text-sm font-medium text-gray-700">Job Description</label>
+    <textarea rows="4" th:text="${job.jobDescription}" disabled
+      class="mt-1 w-full px-4 py-3 border border-gray-200 bg-gray-100 rounded-md resize-none"></textarea>
+  </div>
+
+  <!-- Back Button -->
+  <div class="pt-4 text-center">
+    <a href="/applied-jobs"
+      class="inline-block bg-indigo-600 text-white px-6 py-2 rounded-md font-semibold hover:bg-indigo-700 transition">
+      ← Back to All Jobs
+    </a>
+  </div>
+</div>
+
+</body>
+</html>

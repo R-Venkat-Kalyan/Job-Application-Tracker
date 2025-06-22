@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Feedback - JobTrackrly</title>
+	<script src="https://cdn.tailwindcss.com"></script>
+	<link href="assets/img/favicon.png" rel="icon">
+</head>
+
+<body class="bg-gray-100">
+
+	<!-- Feedback Form -->
+	<div class="flex justify-center items-center min-h-screen bg-gray-100 p-4">
+		<div class="w-full max-w-lg bg-white rounded-lg shadow-md p-6">
+			<h2 class="text-2xl font-bold text-center text-gray-800 mb-4">We Value Your Feedback!</h2>
+			<p class="text-sm text-gray-600 text-center mb-6">
+				Your input helps us improve <span class="font-semibold text-green-600">JobTrackrly</span>. Please share your thoughts.
+			</p>
+
+			<form action="/submit-feedback" method="POST" class="space-y-4">
+				
+				<!-- Feedback Category -->
+				<div>
+					<label for="category" class="block text-sm font-medium text-gray-700">Feedback Category</label>
+					<select id="category" name="category" required
+						class="w-full mt-1 px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:ring-blue-500 focus:border-blue-500">
+						<option value="" disabled selected>Select category</option>
+						<option value="suggestion">Suggestion</option>
+						<option value="issue">Bug or Issue</option>
+						<option value="improvement">Feature Request</option>
+						<option value="other">Other</option>
+					</select>
+				</div>
+
+				<!-- Related Section -->
+				<div>
+					<label for="page" class="block text-sm font-medium text-gray-700">Related Page or Section</label>
+					<select id="page" name="page"
+						class="w-full mt-1 px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:ring-blue-500 focus:border-blue-500">
+						<option value="" disabled selected>Select page/section</option>
+						<option value="dashboard">Dashboard</option>
+						<option value="add-job">Add Job</option>
+						<option value="job-list">Job List</option>
+						<option value="profile">Profile</option>
+						<option value="other">Other</option>
+					</select>
+				</div>
+
+				<!-- Feedback Message -->
+				<div>
+					<label for="message" class="block text-sm font-medium text-gray-700">Feedback Message</label>
+					<textarea id="message" name="message" rows="4" placeholder="Write your feedback here..."
+						class="w-full mt-1 px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:ring-blue-500 focus:border-blue-500" required></textarea>
+				</div>
+
+				<!-- Submit Button -->
+				<div class="text-center">
+					<button type="submit"
+						class="w-full bg-gradient-to-r from-blue-500 to-green-500 text-white font-semibold py-2 px-4 rounded-lg shadow-md hover:shadow-lg hover:from-blue-600 hover:to-green-600 transition-transform transform hover:scale-105">
+						Submit Feedback
+					</button>
+				</div>
+
+			</form>
+		</div>
+	</div>
+
+</body>
+
+</html>

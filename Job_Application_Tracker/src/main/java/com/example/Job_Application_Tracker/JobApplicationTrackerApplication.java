@@ -1,3 +1,4 @@
+
 package com.example.Job_Application_Tracker;
 
 import org.springframework.boot.SpringApplication;
