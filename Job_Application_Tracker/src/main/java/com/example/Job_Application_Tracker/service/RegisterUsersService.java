@@ -25,4 +25,10 @@ public class RegisterUsersService {
 	public RegisterUsers findUserByMail(String email) {
 		return registerUserRepository.findById(email).orElse(null);
 	}
+	
+	public boolean isUserExists(String email) {
+		return registerUserRepository.existsById(email);
+	}
+	
+
 }

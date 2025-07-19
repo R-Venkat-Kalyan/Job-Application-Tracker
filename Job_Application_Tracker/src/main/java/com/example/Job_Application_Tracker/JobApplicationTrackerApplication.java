@@ -11,4 +11,4 @@ public class JobApplicationTrackerApplication {
 		SpringApplication.run(JobApplicationTrackerApplication.class, args);
 	}
 
-}
+} 

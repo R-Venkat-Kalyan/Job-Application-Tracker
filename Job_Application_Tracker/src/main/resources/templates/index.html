@@ -91,13 +91,7 @@
 				<i class="mobile-nav-toggle d-xl-none bi bi-list text-white"></i>
 			</nav>
 
-			<!-- Buttons -->
-			<div class="d-flex gap-2">
-				<a href="/sign-in" class="btn btn-outline-light btn-sm px-3">
-					<i class="bi bi-box-arrow-in-right me-1"></i>Login
-				</a>
-				<!-- <a class="btn btn-primary btn-sm px-3" href="/sign-up">Get Started</a>-->
-			</div>
+			<a class="btn-getstarted" href="/sign-in"><i class="bi bi-box-arrow-in-right me-1"></i>Sign in</a>
 
 		</div>
 	</header>
@@ -105,7 +99,6 @@
 
 	<main class="main">
 
-		<!-- Tailored Hero Section for Job Application Tracker -->
 		<section id="hero" class="hero section">
 			<div class="container" data-aos="fade-up" data-aos-delay="100">
 				<div class="row align-items-center mb-5">
@@ -631,6 +624,7 @@
 			</div>
 		</section><!-- /Team Section -->
 
+
 		<!-- Contact Section -->
 		<section id="contact" class="contact section">
 			<!-- Section Title -->
@@ -640,7 +634,18 @@
 			</div>
 
 			<div class="container" data-aos="fade-up" data-aos-delay="100">
+
+				<!-- Alert Box for Feedback -->
+				<div th:if="${successMessage}"
+					class="alert alert-success alert-dismissible fade show text-center fw-bold bg-success text-white p-3 mb-4 rounded"
+					role="alert">
+					<i class="bi bi-check-circle-fill me-2"></i> <span th:text="${successMessage}"></span>
+					<button type="button" class="btn-close btn-close-white" data-bs-dismiss="alert"
+						aria-label="Close"></button>
+				</div>
+
 				<div class="row gy-4 mb-5">
+					<!-- Email Support -->
 					<div class="col-lg-6" data-aos="fade-up" data-aos-delay="100">
 						<div class="info-card">
 							<div class="icon-box"><i class="bi bi-envelope-at-fill"></i></div>
@@ -648,6 +653,8 @@
 							<p><a href="mailto:reddy.venkat.kalyan04@gmail.com">reddy.venkat.kalyan04@gmail.com</a></p>
 						</div>
 					</div>
+
+					<!-- Call Us -->
 					<div class="col-lg-6" data-aos="fade-up" data-aos-delay="200">
 						<div class="info-card">
 							<div class="icon-box"><i class="bi bi-phone-fill"></i></div>
@@ -657,32 +664,36 @@
 					</div>
 				</div>
 
+				<!-- Contact Form -->
 				<div class="row">
 					<div class="col-lg-12">
 						<div class="form-wrapper" data-aos="fade-up" data-aos-delay="300">
-							<form action="/submit-contact" method="post" class="php-email-form" th:object="${contact}">
+							<form action="/submit-contact" method="post" class="php-email-form">
+
+								<!-- Name & Email -->
 								<div class="row">
 									<div class="col-md-6 form-group">
 										<div class="input-group">
 											<span class="input-group-text"><i class="bi bi-person"></i></span>
-											<input type="text" th:field="*{name}" class="form-control"
-												placeholder="Your Name*" required>
+											<input type="text" name="name" class="form-control" placeholder="Your Name*"
+												required>
 										</div>
 									</div>
 									<div class="col-md-6 form-group">
 										<div class="input-group">
 											<span class="input-group-text"><i class="bi bi-envelope"></i></span>
-											<input type="email" th:field="*{email}" class="form-control"
+											<input type="email" name="email" class="form-control"
 												placeholder="Email Address*" required>
 										</div>
 									</div>
 								</div>
 
+								<!-- Topic & Subject -->
 								<div class="row mt-3">
 									<div class="col-md-6 form-group">
 										<div class="input-group">
 											<span class="input-group-text"><i class="bi bi-flag"></i></span>
-											<select th:field="*{topic}" class="form-control" required>
+											<select name="topic" class="form-control" required>
 												<option value="">Choose a Topic*</option>
 												<option value="Feedback">Feedback / Suggestion</option>
 												<option value="Issue">Report an Issue</option>
@@ -694,35 +705,33 @@
 									<div class="col-md-6 form-group">
 										<div class="input-group">
 											<span class="input-group-text"><i class="bi bi-chat-text"></i></span>
-											<input type="text" th:field="*{subject}" class="form-control"
+											<input type="text" name="subject" class="form-control"
 												placeholder="Subject*" required>
 										</div>
 									</div>
 								</div>
 
+								<!-- Message -->
 								<div class="form-group mt-3">
 									<div class="input-group">
 										<span class="input-group-text"><i class="bi bi-pencil"></i></span>
-										<textarea th:field="*{message}" class="form-control" rows="6"
+										<textarea name="message" class="form-control" rows="6"
 											placeholder="Your Message*" required></textarea>
 									</div>
 								</div>
 
-								<div class="my-3">
-									<div class="loading">Loading</div>
-									<div class="error-message"></div>
-									<div class="sent-message">Your message has been sent. Thank you!</div>
-								</div>
-
-								<div class="text-center">
+								<!-- Submit -->
+								<div class="text-center mt-4">
 									<button type="submit" class="btn btn-primary px-4">Send Message</button>
 								</div>
 							</form>
 						</div>
 					</div>
 				</div>
+
 			</div>
 		</section>
+
 
 
 	</main>
@@ -807,18 +816,7 @@
 	<script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
 
 	<!-- Main JS File -->
-	<script src="assets/js/main.js"></script>
-	<script>
-		function dismissToast() {
-			const toast = document.getElementById("toast");
-			if (toast) toast.style.display = "none";
-		}
-
-		// Auto-dismiss after 4 seconds
-		window.onload = () => {
-			setTimeout(dismissToast, 6000);
-		};
-	</script>
+	<script src="assets/js/main.js"></script>s
 
 </body>
 
