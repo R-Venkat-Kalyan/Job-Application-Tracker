@@ -1,0 +1,66 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>JobTrackrly - No Update Reminder</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: #f4f4f9;
+      margin: 0;
+      padding: 0;
+      color: #333;
+    }
+    .container {
+      max-width: 650px;
+      margin: 30px auto;
+      background: white;
+      padding: 40px;
+      border-radius: 12px;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.1);
+    }
+    h1 {
+      color: #4f46e5;
+      text-align: center;
+    }
+    p {
+      font-size: 16px;
+      line-height: 1.6;
+    }
+    .highlight {
+      background-color: #f0f4ff;
+      padding: 12px;
+      border-left: 5px solid #4f46e5;
+      margin: 20px 0;
+    }
+    .footer {
+      text-align: center;
+      font-size: 13px;
+      color: #888;
+      margin-top: 40px;
+    }
+    .branding {
+      text-align: center;
+      font-weight: bold;
+      margin-top: 10px;
+      color: #4f46e5;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>JobTrackrly - Time to Follow Up!</h1>
+    <p>Hello there 👋,</p>
+    <p>It's been over <strong>2 weeks</strong> since you applied to the following jobs, and we haven't heard back yet:</p>
+    <div class="highlight">
+      <p><strong>{{jobList}}</strong></p>
+    </div>
+    <p>We recommend following up with the recruiters or revisiting these opportunities. Every step counts! 💪</p>
+    <p class="branding">— Team JobTrackrly 🚀</p>
+    <div class="footer">
+      <p>This is a system-generated email. Please do not reply.</p>
+    </div>
+  </div>
+</body>
+</html>

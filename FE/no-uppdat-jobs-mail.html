@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    body { font-family: 'Poppins', sans-serif; background: #f9f9f9; padding: 20px; }
+    .container { background: #ffffff; padding: 30px; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.05); max-width: 600px; margin: auto; }
+    .header { text-align: center; color: #4f46e5; font-weight: bold; font-size: 1.5rem; }
+    .highlight { color: #f97316; font-weight: bold; }
+    .footer { margin-top: 30px; font-size: 0.8rem; color: #888; text-align: center; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="header">⏳ Job Status Reminder</div>
+    <p>Hello <strong th:text="${userName}">User</strong>,</p>
+    <p>Looks like you've applied to the following jobs and haven't updated their status for over <span class="highlight">2 weeks</span>:</p>
+    <ul th:each="job : ${noUpdateJobs}">
+      <li th:text="${job.companyName} + ' - ' + ${job.roleName}"></li>
+    </ul>
+    <p>It's a good idea to follow up or update your tracker for better progress!</p>
+    <div class="footer">
+      🔔 Please do not reply to this email. It’s a system-generated notification from JobTrackrly.
+    </div>
+  </div>
+</body>
+</html>

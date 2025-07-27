@@ -1,0 +1,63 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>JobTrackrly - Monthly Summary</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: #f7fafc;
+      margin: 0;
+      padding: 0;
+      color: #333;
+    }
+    .container {
+      max-width: 700px;
+      margin: 40px auto;
+      background: white;
+      padding: 40px;
+      border-radius: 12px;
+      box-shadow: 0 8px 30px rgba(0,0,0,0.08);
+    }
+    h1 {
+      text-align: center;
+      color: #4f46e5;
+    }
+    .stats {
+      background: #eef2ff;
+      padding: 20px;
+      border-left: 5px solid #4f46e5;
+      margin-top: 20px;
+    }
+    .footer {
+      text-align: center;
+      font-size: 13px;
+      color: #777;
+      margin-top: 30px;
+    }
+    .branding {
+      text-align: center;
+      font-weight: bold;
+      margin-top: 20px;
+      color: #4f46e5;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Your Monthly Recap</h1>
+    <p>Hey there 🌟, here's how your job hunt has shaped up this month:</p>
+    <div class="stats">
+      <p><strong>Jobs Applied:</strong> {{applied}}</p>
+      <p><strong>Shortlisted:</strong> {{shortlisted}}</p>
+      <p><strong>Rejected:</strong> {{rejected}}</p>
+    </div>
+    <p>You’re doing great. Stay consistent, stay confident 💼✨</p>
+    <p class="branding">— From the JobTrackrly Team</p>
+    <div class="footer">
+      <p>This is a system-generated email. Please do not reply.</p>
+    </div>
+  </div>
+</body>
+</html>
