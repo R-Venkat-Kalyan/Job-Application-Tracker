@@ -3,6 +3,7 @@ package com.example.Job_Application_Tracker.service;
 import java.nio.file.Files;
 import java.time.LocalDate;
 import java.time.ZoneId;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -31,130 +32,144 @@ public class JobApplicationScheduler {
 
 	private static final String FROM_EMAIL = "taskprompter@gmail.com";
 
-    @Scheduled(fixedRate = 90000)
-    public void sendNoUpdateReminders() throws Exception {
-        LocalDate cutoff = LocalDate.now().minusDays(14);
+//	@Scheduled(fixedRate = 60000) // for testing every 1 minutes
+	@Scheduled(cron = "0 0 10 */14 * *") // real: every 2 weeks at 10 AM
+	public void sendNoUpdateReminders() {
+		LocalDate cutoff = LocalDate.now().minusDays(14);
 
-        List<JobApplication> allJobs = jobRepo.findAll().stream()
-            .filter(j -> j.getEmail() != null)
-            .collect(Collectors.toList());
+		// Group jobs by user email
+		Map<String, List<JobApplication>> grouped = jobRepo.findAll().stream()
+				.filter(j -> j.getEmail() != null && j.getDateApplied() != null && j.getStatus() != null)
+				.filter(j -> j.getStatus().equalsIgnoreCase("Applied") && j.getDateApplied().isBefore(cutoff))
+				.collect(Collectors.groupingBy(JobApplication::getEmail));
 
-        Map<String, List<JobApplication>> grouped = allJobs.stream()
-            .filter(j -> "Applied".equalsIgnoreCase(j.getStatus()))
-            .filter(j -> j.getDateApplied() != null && j.getDateApplied().isBefore(cutoff))
-            .collect(Collectors.groupingBy(JobApplication::getEmail));
+		grouped.forEach((email, jobs) -> {
+			if (jobs.isEmpty())
+				return;
 
-        for (Map.Entry<String, List<JobApplication>> entry : grouped.entrySet()) {
-            String email = entry.getKey();
-            List<JobApplication> jobs = entry.getValue();
+			try {
+				// Build the job list as HTML bullet points
+				StringBuilder jobListBuilder = new StringBuilder("<ul style='padding-left:20px;'>");
+				for (JobApplication job : jobs) {
+					jobListBuilder.append("<li>").append("<strong>").append(job.getCompanyName()).append("</strong>")
+							.append(" — ").append(job.getRoleName()).append(" (Applied on ")
+							.append(job.getDateApplied()).append(")").append("</li>");
+				}
+				jobListBuilder.append("</ul>");
 
-            if (jobs.isEmpty()) continue;
+				// Add the disclaimer in a cool style
+				String disclaimer = "<div style='margin-top:20px; font-size:14px; color:#555; "
+						+ "background:#fff4e5; padding:10px; border-left:4px solid #f59e0b;'>"
+						+ "⚠ If any information above is incorrect, please log in to <strong>JobTrackrly</strong> "
+						+ "and update your application details. Keeping your data accurate helps us help you better! 💡"
+						+ "</div>";
 
-            StringBuilder rows = new StringBuilder();
-            for (JobApplication job : jobs) {
-                rows.append("<tr><td>").append(job.getCompanyName())
-                    .append("</td><td>").append(job.getRoleName())
-                    .append("</td><td>").append(job.getDateApplied())
-                    .append("</td></tr>");
-            }
+				sendEmail(email, "⏳ Job Applications Reminder", "no-update-mail.html",
+						Map.of("{{jobList}}", jobListBuilder.toString() + disclaimer));
 
-            sendEmail(email, "⏳ Job Applications Reminder", "no-update-mail.html",
-                    Map.of("{{tableBody}}", rows.toString()));
-        }
-    }
+				System.out.println("No-update reminder sent to: " + email);
 
-    @Scheduled(fixedRate = 90000)
-    public void sendWeeklySummary() throws Exception {
-        LocalDate from = LocalDate.now().minusDays(7);
-        List<JobApplication> allJobs = jobRepo.findAll().stream()
-            .filter(j -> j.getEmail() != null && j.getDateApplied() != null)
-            .collect(Collectors.toList());
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		});
+	}
 
-        Set<String> users = allJobs.stream()
-            .map(JobApplication::getEmail)
-            .collect(Collectors.toSet());
+	// 📊 Weekly Summary: every Monday at 11 AM
 
-        for (String email : users) {
-            long applied = allJobs.stream()
-                .filter(j -> email.equals(j.getEmail()) && !j.getDateApplied().isBefore(from))
-                .count();
+//	@Scheduled(fixedRate = 60000) // for testing every 1 minutes
+	@Scheduled(cron = "0 0 11 * * MON")
+	public void sendWeeklySummary() {
+		LocalDate from = LocalDate.now().minusDays(7);
+		List<JobApplication> allJobs = jobRepo.findAll();
 
-            long shortlisted = allJobs.stream()
-                .filter(j -> email.equals(j.getEmail())
-                        && "SHORTLISTED".equalsIgnoreCase(j.getStatus())
-                        && !j.getDateApplied().isBefore(from))
-                .count();
+		for (JobApplication job : allJobs) {
+			if (job.getEmail() == null || job.getDateApplied() == null)
+				continue;
 
-            long rejected = allJobs.stream()
-                .filter(j -> email.equals(j.getEmail())
-                        && "REJECTED".equalsIgnoreCase(j.getStatus())
-                        && !j.getDateApplied().isBefore(from))
-                .count();
+			String email = job.getEmail();
 
-            if (applied == 0 && shortlisted == 0 && rejected == 0) continue;
+			long applied = countJobs(allJobs, email, from, null);
+			long shortlisted = countJobs(allJobs, email, from, "SHORTLISTED");
+			long rejected = countJobs(allJobs, email, from, "REJECTED");
 
-            sendEmail(email, "📊 Weekly Job Summary", "weekly-summary-mail.html",
-                Map.of("{{applied}}", String.valueOf(applied),
-                       "{{shortlisted}}", String.valueOf(shortlisted),
-                       "{{rejected}}", String.valueOf(rejected)));
-        }
-    }
+			if (applied == 0 && shortlisted == 0 && rejected == 0)
+				continue;
 
-    @Scheduled(fixedRate = 90000)
-    public void sendMonthlySummary() throws Exception {
-        LocalDate from = LocalDate.now().minusMonths(1);
-        List<JobApplication> allJobs = jobRepo.findAll().stream()
-            .filter(j -> j.getEmail() != null && j.getDateApplied() != null)
-            .collect(Collectors.toList());
+			try {
+				Map<String, String> placeholders = new HashMap<>();
+				placeholders.put("{{applied}}", String.valueOf(applied));
+				placeholders.put("{{shortlisted}}", String.valueOf(shortlisted));
+				placeholders.put("{{rejected}}", String.valueOf(rejected));
 
-        Set<String> users = allJobs.stream()
-            .map(JobApplication::getEmail)
-            .collect(Collectors.toSet());
+				sendEmail(email, "📊 Weekly Job Summary", "weekly-summary-mail.html", placeholders);
+				System.out.println("Weekly summary sent to: " + email);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+	}
 
-        for (String email : users) {
-            long applied = allJobs.stream()
-                .filter(j -> email.equals(j.getEmail()) && !j.getDateApplied().isBefore(from))
-                .count();
+//	@Scheduled(fixedRate = 60000) // for testing every 1 minutes
 
-            long shortlisted = allJobs.stream()
-                .filter(j -> email.equals(j.getEmail())
-                        && "SHORTLISTED".equalsIgnoreCase(j.getStatus())
-                        && !j.getDateApplied().isBefore(from))
-                .count();
+	@Scheduled(cron = "0 0 12 1 * *") // 📅 Monthly Summary: 1st day of each month at 12 PM
+	public void sendMonthlySummary() {
+		LocalDate from = LocalDate.now().minusMonths(1);
+		List<JobApplication> allJobs = jobRepo.findAll();
 
-            long rejected = allJobs.stream()
-                .filter(j -> email.equals(j.getEmail())
-                        && "REJECTED".equalsIgnoreCase(j.getStatus())
-                        && !j.getDateApplied().isBefore(from))
-                .count();
+		for (JobApplication job : allJobs) {
+			if (job.getEmail() == null || job.getDateApplied() == null)
+				continue;
 
-            if (applied == 0 && shortlisted == 0 && rejected == 0) continue;
+			String email = job.getEmail();
 
-            sendEmail(email, "📈 Monthly Job Summary", "monthly-summary-mail.html",
-                Map.of("{{applied}}", String.valueOf(applied),
-                       "{{shortlisted}}", String.valueOf(shortlisted),
-                       "{{rejected}}", String.valueOf(rejected)));
-        }
-    }
+			long applied = countJobs(allJobs, email, from, null);
+			long shortlisted = countJobs(allJobs, email, from, "SHORTLISTED");
+			long rejected = countJobs(allJobs, email, from, "REJECTED");
 
-    private void sendEmail(String to, String subject, String templateName, Map<String, String> placeholders)
-            throws Exception {
-        MimeMessagePreparator preparator = mimeMessage -> {
-            MimeMessageHelper helper = new MimeMessageHelper(mimeMessage, true);
-            helper.setFrom(FROM_EMAIL);
-            helper.setTo(to);
-            helper.setSubject(subject);
+			if (applied == 0 && shortlisted == 0 && rejected == 0)
+				continue;
 
-            Resource resource = new ClassPathResource("templates/" + templateName);
-            String template = new String(Files.readAllBytes(resource.getFile().toPath()));
+			try {
+				Map<String, String> placeholders = new HashMap<>();
+				placeholders.put("{{applied}}", String.valueOf(applied));
+				placeholders.put("{{shortlisted}}", String.valueOf(shortlisted));
+				placeholders.put("{{rejected}}", String.valueOf(rejected));
 
-            for (Map.Entry<String, String> entry : placeholders.entrySet()) {
-                template = template.replace(entry.getKey(), entry.getValue());
-            }
+				sendEmail(email, "📈 Monthly Job Summary", "monthly-summary-mail.html", placeholders);
+				System.out.println("Monthly summary sent to: " + email);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+	}
 
-            helper.setText(template, true);
-        };
+	private long countJobs(List<JobApplication> allJobs, String email, LocalDate from, String status) {
+		return allJobs.stream().filter(j -> email.equals(j.getEmail()))
+				.filter(j -> j.getDateApplied() != null && !j.getDateApplied().isBefore(from))
+				.filter(j -> status == null || (j.getStatus() != null && j.getStatus().equalsIgnoreCase(status)))
+				.count();
+	}
 
-        mailSender.send(preparator);
-    }
+	private void sendEmail(String to, String subject, String templateName, Map<String, String> placeholders)
+			throws Exception {
+
+		MimeMessagePreparator preparator = mimeMessage -> {
+			MimeMessageHelper helper = new MimeMessageHelper(mimeMessage, true);
+			helper.setFrom(FROM_EMAIL);
+			helper.setTo(to);
+			helper.setSubject(subject);
+
+			Resource resource = new ClassPathResource("templates/" + templateName);
+			String template = new String(Files.readAllBytes(resource.getFile().toPath()));
+
+			for (Map.Entry<String, String> entry : placeholders.entrySet()) {
+				template = template.replace(entry.getKey(), entry.getValue());
+			}
+
+			helper.setText(template, true);
+		};
+
+		mailSender.send(preparator);
+	}
 }

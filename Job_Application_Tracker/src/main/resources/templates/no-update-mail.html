@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,57 +6,89 @@
   <style>
     body {
       font-family: 'Segoe UI', sans-serif;
-      background: #f4f4f9;
+      background: linear-gradient(135deg, #f0f4ff, #ffffff);
       margin: 0;
       padding: 0;
       color: #333;
     }
     .container {
-      max-width: 650px;
-      margin: 30px auto;
+      max-width: 700px;
+      margin: 40px auto;
       background: white;
       padding: 40px;
-      border-radius: 12px;
-      box-shadow: 0 8px 24px rgba(0,0,0,0.1);
+      border-radius: 15px;
+      box-shadow: 0 8px 28px rgba(0,0,0,0.12);
     }
     h1 {
       color: #4f46e5;
       text-align: center;
+      margin-bottom: 10px;
     }
-    p {
+    .intro {
+      text-align: center;
       font-size: 16px;
-      line-height: 1.6;
+      color: #555;
+      margin-bottom: 25px;
     }
-    .highlight {
-      background-color: #f0f4ff;
-      padding: 12px;
+    .job-list {
+      background: #f9faff;
+      border-radius: 10px;
+      padding: 20px;
       border-left: 5px solid #4f46e5;
-      margin: 20px 0;
+      margin-bottom: 25px;
+    }
+    .job-list ul {
+      margin: 0;
+      padding-left: 20px;
+      list-style: none;
+    }
+    .job-list li {
+      padding: 10px 0;
+      border-bottom: 1px solid #e5e7eb;
+      transition: background 0.2s ease;
+    }
+    .job-list li:last-child {
+      border-bottom: none;
+    }
+    .job-list li:hover {
+      background: #eef2ff;
+    }
+    .disclaimer {
+      background: #fff4e5;
+      border-left: 4px solid #f59e0b;
+      padding: 15px;
+      font-size: 14px;
+      color: #92400e;
+      border-radius: 5px;
+    }
+    .branding {
+      text-align: center;
+      font-weight: bold;
+      margin-top: 25px;
+      color: #4f46e5;
+      font-size: 16px;
     }
     .footer {
       text-align: center;
       font-size: 13px;
       color: #888;
-      margin-top: 40px;
-    }
-    .branding {
-      text-align: center;
-      font-weight: bold;
-      margin-top: 10px;
-      color: #4f46e5;
+      margin-top: 20px;
     }
   </style>
 </head>
 <body>
   <div class="container">
     <h1>JobTrackrly - Time to Follow Up!</h1>
-    <p>Hello there 👋,</p>
-    <p>It's been over <strong>2 weeks</strong> since you applied to the following jobs, and we haven't heard back yet:</p>
-    <div class="highlight">
-      <p><strong>{{jobList}}</strong></p>
+    <p class="intro">Hello there 👋,<br>
+      It's been over <strong>2 weeks</strong> since you applied to the following jobs, and we haven't heard back yet:
+    </p>
+
+    <div class="job-list">
+      {{jobList}}
     </div>
-    <p>We recommend following up with the recruiters or revisiting these opportunities. Every step counts! 💪</p>
+
     <p class="branding">— Team JobTrackrly 🚀</p>
+
     <div class="footer">
       <p>This is a system-generated email. Please do not reply.</p>
     </div>
