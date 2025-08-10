@@ -91,7 +91,7 @@ public class RouteController {
 			RegisterUsers user = (RegisterUsers) session.getAttribute("user");
 			registerUsersService.registerUser(user);
 			session.invalidate(); // Clear session after successful registration
-			redirectAttributes.addFlashAttribute("toastMessage", "Registration Done..❌\nPlease Sign-In Now !!");
+			redirectAttributes.addFlashAttribute("toastMessage", "Registration Done..✔ \nPlease Sign-In Now !!");
 			return "redirect:/sign-in";
 		} else {
 			redirectAttributes.addFlashAttribute("toastMessage", "Invalid OTP..❌❌");
