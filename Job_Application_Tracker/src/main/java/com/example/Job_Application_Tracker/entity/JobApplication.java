@@ -6,32 +6,31 @@ import org.springframework.data.mongodb.core.mapping.Document;
 
 @Document(collection = "Job_Applications")
 public class JobApplication {
-	
+
 	@Id
-    private String id;
+	private String id;
 
-    private String companyName;
-    private String roleName;
-    private String roleType;
-    private String platformUsed;
-    private String applicationLink;
-    private Double expectedCtc;
-    private LocalDate dateApplied;
-    private String jobDescription;
-    private String email;
-    private String status;
+	private String companyName;
+	private String roleName;
+	private String roleType;
+	private String platformUsed;
+	private String applicationLink;
+	private Double expectedCtc;
+	private LocalDate dateApplied;
+	private String jobDescription;
+	private String email;
+	private String status;
 
-    private String resumeName;
-    private String resumeType;
-    private byte[] resumeData;
+	// Instead of storing resume data in DB
+	private String resumeUrl;
 
-    public JobApplication() {
-    	
-    }
+	public JobApplication() {
+
+	}
 
 	public JobApplication(String id, String companyName, String roleName, String roleType, String platformUsed,
 			String applicationLink, Double expectedCtc, LocalDate dateApplied, String jobDescription, String email,
-			String status, String resumeName, String resumeType, byte[] resumeData) {
+			String status, String resumeUrl) {
 		super();
 		this.id = id;
 		this.companyName = companyName;
@@ -44,9 +43,7 @@ public class JobApplication {
 		this.jobDescription = jobDescription;
 		this.email = email;
 		this.status = status;
-		this.resumeName = resumeName;
-		this.resumeType = resumeType;
-		this.resumeData = resumeData;
+		this.resumeUrl = resumeUrl;
 	}
 
 	public String getId() {
@@ -137,30 +134,14 @@ public class JobApplication {
 		this.status = status;
 	}
 
-	public String getResumeName() {
-		return resumeName;
+	public String getResumeUrl() {
+		return resumeUrl;
 	}
 
-	public void setResumeName(String resumeName) {
-		this.resumeName = resumeName;
+	public void setResumeUrl(String resumeUrl) {
+		this.resumeUrl = resumeUrl;
 	}
-
-	public String getResumeType() {
-		return resumeType;
-	}
-
-	public void setResumeType(String resumeType) {
-		this.resumeType = resumeType;
-	}
-
-	public byte[] getResumeData() {
-		return resumeData;
-	}
-
-	public void setResumeData(byte[] resumeData) {
-		this.resumeData = resumeData;
-	}
-    
-    
-    
+	
 }
+
+	
