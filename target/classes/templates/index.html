@@ -1,0 +1,823 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+	<meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+	<!-- SEO Title & Description -->
+	<title>JobTrackrly – Your Ultimate Job Application Tracker</title>
+	<meta name="description"
+		content="JoTrackrly helps job seekers track job applications, manage resumes, and receive reminders — the smartest way to stay organized during your job hunt.">
+	<meta name="keywords"
+		content="job tracker, job application tracker, job search tool, track job applications, job hunt app, resume tracking, job status reminders, career tools, JoTrackrly">
+
+	<!-- Open Graph Meta Tags (for social media sharing) -->
+	<meta property="og:title" content="JoTrackrly – Job Application Tracker for Smart Job Seekers">
+	<meta property="og:description"
+		content="Track, manage, and analyze your job applications with JoTrackrly. Get organized and stay ahead in your job search.">
+	<meta property="og:image" content="https://yourdomain.com/assets/img/og-image.png">
+	<meta property="og:url" content="https://yourdomain.com">
+	<meta property="og:type" content="website">
+
+	<!-- Twitter Meta Tags -->
+	<meta name="twitter:card" content="summary_large_image">
+	<meta name="twitter:title" content="JoTrackrly – Smart Job Application Tracking">
+	<meta name="twitter:description" content="Organize and boost your job search with reminders, analytics, and more.">
+	<meta name="twitter:image" content="https://yourdomain.com/assets/img/og-image.png">
+
+	<!-- Favicons -->
+	<link href="assets/img/favicon.png" rel="icon">
+	<link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+	<!-- Fonts -->
+	<link href="https://fonts.googleapis.com" rel="preconnect">
+	<link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+	<link
+		href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Poppins:wght@400;600;700&display=swap"
+		rel="stylesheet">
+
+	<!-- Vendor CSS Files -->
+	<link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+	<link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+	<link href="assets/vendor/aos/aos.css" rel="stylesheet">
+	<link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+	<link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+
+	<!-- Main CSS File -->
+	<link href="assets/css/main.css" rel="stylesheet">
+	<style>
+		@keyframes slide-in {
+			0% {
+				opacity: 0;
+				transform: translateY(-20px) translateX(50%);
+			}
+
+			100% {
+				opacity: 1;
+				transform: translateY(0) translateX(0);
+			}
+		}
+
+		.animate-slide-in {
+			animation: slide-in 0.5s ease-out;
+		}
+	</style>
+</head>
+
+
+<body class="index-page">
+
+	<!-- Header -->
+	<header id="header" class="header d-flex align-items-center fixed-top" style="background-color: #0e0e0e;">
+		<div class="container position-relative d-flex align-items-center justify-content-between">
+
+			<!-- Logo -->
+			<a href="index.html" class="logo d-flex align-items-center me-auto me-xl-0 text-white text-decoration-none">
+				<h1 class="sitename" style="font-family: 'Poppins', sans-serif; font-weight: 600; color: #88f572;">
+					JobTrackrly</h1><span style="color: #fff;"></span>
+			</a>
+
+			<!-- Navigation -->
+			<nav id="navmenu" class="navmenu">
+				<ul>
+					<li><a href="#hero" class="active">Home</a></li>
+					<li><a href="#about">About</a></li>
+					<li><a href="#services">Services</a></li>
+					<li><a href="#faq">FAQs</a></li>
+					<li><a href="#team">Team</a></li>
+					<li><a href="#contact">Contact</a></li>
+				</ul>
+				<i class="mobile-nav-toggle d-xl-none bi bi-list text-white"></i>
+			</nav>
+
+			<a class="btn-getstarted" href="/sign-in"><i class="bi bi-box-arrow-in-right me-1"></i>Sign in</a>
+
+		</div>
+	</header>
+
+
+	<main class="main">
+
+		<section id="hero" class="hero section">
+			<div class="container" data-aos="fade-up" data-aos-delay="100">
+				<div class="row align-items-center mb-5">
+					<div class="col-lg-6 mb-4 mb-lg-0">
+						<div class="badge-wrapper mb-3">
+							<div class="d-inline-flex align-items-center rounded-pill border border-accent-light">
+								<div class="icon-circle me-2">
+									<i class="bi bi-briefcase"></i>
+								</div>
+								<span class="badge-text me-3">Smart Job Tracking</span>
+							</div>
+						</div>
+
+						<h1 class="hero-title mb-4">Never Lose Track of Your Job Applications</h1>
+
+						<p class="hero-description mb-4">Track, analyze, and get reminders for every job you apply to —
+							all in one
+							place. Perfect for freshers managing multiple applications across platforms.</p>
+
+						<div class="cta-wrapper">
+							<a href="/sign-up" class="btn btn-primary">
+								Get Started
+							</a>
+
+						</div>
+					</div>
+
+					<div class="col-lg-6">
+						<div class="hero-image">
+							<img src="assets/img/illustration/illustration-16.webp" alt="Job Tracker App"
+								class="img-fluid" loading="lazy">
+						</div>
+					</div>
+				</div>
+
+				<div class="row feature-boxes">
+					<div class="col-lg-4 mb-4 mb-lg-0" data-aos="fade-up" data-aos-delay="200">
+						<div class="feature-box">
+							<div class="feature-icon me-sm-4 mb-3 mb-sm-0">
+								<i class="bi bi-calendar-check"></i>
+							</div>
+							<div class="feature-content">
+								<h3 class="feature-title">Weekly Reminders</h3>
+								<p class="feature-text">Get email reminders for jobs with no status updates after 2
+									weeks.</p>
+							</div>
+						</div>
+					</div>
+
+					<div class="col-lg-4 mb-4 mb-lg-0" data-aos="fade-up" data-aos-delay="300">
+						<div class="feature-box">
+							<div class="feature-icon me-sm-4 mb-3 mb-sm-0">
+								<i class="bi bi-bar-chart"></i>
+							</div>
+							<div class="feature-content">
+								<h3 class="feature-title">Monthly Insights</h3>
+								<p class="feature-text">Receive analytics about your applied, shortlisted, and rejected
+									jobs.</p>
+							</div>
+						</div>
+					</div>
+
+					<div class="col-lg-4" data-aos="fade-up" data-aos-delay="400">
+						<div class="feature-box">
+							<div class="feature-icon me-sm-4 mb-3 mb-sm-0">
+								<i class="bi bi-person-lines-fill"></i>
+							</div>
+							<div class="feature-content">
+								<h3 class="feature-title">Resume & JD Records</h3>
+								<p class="feature-text">Log the resume version used and save the job description for
+									each job.</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section><!-- /Hero Section -->
+
+		<!-- Call To Action -->
+
+
+		<section id="about" class="section py-5"
+			style="background: radial-gradient(circle at center, rgba(25, 25, 25, 0.95), #000); font-family: 'Poppins', sans-serif;">
+			<!-- Section Title -->
+			<div class="container section-title" data-aos="fade-up">
+				<h2 style="color: aliceblue;">About Us</h2>
+				<p style="color: aliceblue;">Know more about what we do.</p>
+			</div><!-- End Section Title -->
+			<div class="container" data-aos="zoom-in">
+				<div class="row justify-content-center">
+					<div class="col-lg-10 text-center">
+						<div class="p-4 p-md-5 rounded-5 shadow-lg border border-secondary-subtle"
+							style="background: rgba(255, 255, 255, 0.06); backdrop-filter: blur(16px); box-shadow: 0 0 20px rgba(255, 255, 255, 0.05);">
+
+							<h2 class="display-5 fw-bold mb-4">
+								<span class="text-white">Job Hunting</span> <span class="text-warning">Made
+									Simple</span>
+							</h2>
+
+							<p class="lead text-light mb-4">You apply to multiple jobs every week. But when you finally
+								hear back,
+								it's often chaos — you can’t remember where, when, or how you applied.</p>
+
+							<p class="fs-5 text-light mb-4">Our tracker helps you stay calm and organized, letting you
+								instantly view
+								job details, resume used, JD, and track your status — anytime, anywhere.</p>
+
+							<div class="row text-start mt-5 mb-4 g-4">
+								<div class="col-md-6">
+									<div class="d-flex align-items-start">
+										<i class="bi bi-journal-text text-warning fs-4 me-3"></i>
+										<div>
+											<h6 class="fw-semibold text-white mb-1">Track Every Job</h6>
+											<p class="text-light small mb-0">Capture title, company, platform, JD, and
+												resume version used.
+											</p>
+										</div>
+									</div>
+								</div>
+								<div class="col-md-6">
+									<div class="d-flex align-items-start">
+										<i class="bi bi-filter-square text-info fs-4 me-3"></i>
+										<div>
+											<h6 class="fw-semibold text-white mb-1">Organize Effortlessly</h6>
+											<p class="text-light small mb-0">Jobs grouped into Applied, Shortlisted,
+												Rejected, or No Update.
+											</p>
+										</div>
+									</div>
+								</div>
+								<div class="col-md-6">
+									<div class="d-flex align-items-start">
+										<i class="bi bi-bell-fill text-primary fs-4 me-3"></i>
+										<div>
+											<h6 class="fw-semibold text-white mb-1">Get Timely Alerts</h6>
+											<p class="text-light small mb-0">Receive weekly email reminders for pending
+												updates.</p>
+										</div>
+									</div>
+								</div>
+								<div class="col-md-6">
+									<div class="d-flex align-items-start">
+										<i class="bi bi-graph-up-arrow text-danger fs-4 me-3"></i>
+										<div>
+											<h6 class="fw-semibold text-white mb-1">Visualize Your Progress</h6>
+											<p class="text-light small mb-0">Get monthly reports of all jobs and status
+												changes.</p>
+										</div>
+									</div>
+								</div>
+							</div>
+
+							<div class="mt-4">
+								<a href="#"
+									class="btn btn-outline-light btn-lg px-4 me-3 fw-semibold rounded-pill">Start
+									Tracking</a>
+								<a href="#how-we-work"
+									class="btn btn-warning btn-lg px-4 fw-semibold text-dark rounded-pill">How It
+									Works <i class="bi bi-arrow-down-short ms-2"></i></a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+
+
+		<!-- /Call To Action 2 Section -->
+		<!-- About Section for Job Tracker -->
+		<section class="about section">
+			<div class="container">
+				<div class="row gy-4">
+					<div class="col-lg-6 content" data-aos="fade-up" data-aos-delay="100">
+						<p class="who-we-are">About the App</p>
+						<h3>Your Central Job Application Hub</h3>
+						<p class="fst-italic">We built this tool to help freshers organize their job applications in one
+							place,
+							remember every detail, and stay informed throughout the hiring process.</p>
+						<ul>
+							<li><i class="bi bi-check-circle"></i> <span>Track every job across Naukri, LinkedIn,
+									Unstop, and
+									more.</span></li>
+							<li><i class="bi bi-check-circle"></i> <span>Save job descriptions, resumes used, and links
+									easily.</span>
+							</li>
+							<li><i class="bi bi-check-circle"></i> <span>Get reminders and monthly performance
+									summaries.</span></li>
+						</ul>
+						<a href="#contact" class="read-more"><span>Contact Us</span><i
+								class="bi bi-arrow-right"></i></a>
+					</div>
+					<div class="col-lg-6 about-images" data-aos="fade-up" data-aos-delay="200">
+						<div class="row gy-4">
+							<div class="col-lg-6">
+								<img src="assets/img/about/Image1.jpg" class="img-fluid" alt="">
+								<!-- <img src="assets/img/about/Image1.jpg" class="img-fluid" alt=""> -->
+							</div>
+							<div class="col-lg-6">
+								<img src="assets/img/about/Image2.jpg" class="img-fluid" alt="">
+								<img src="assets/img/about/Image3.png" class="img-fluid" alt="">
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section><!-- /About Section -->
+
+
+		<!-- How We Work Section -->
+		<section id="how-we-work" class="how-we-work section">
+
+			<!-- Section Title -->
+			<div class="container section-title" data-aos="fade-up">
+				<h2>How We Work</h2>
+				<p>We make your job search seamless by helping you stay organized every step of the way.</p>
+			</div><!-- End Section Title -->
+
+			<div class="container" data-aos="fade-up" data-aos-delay="100">
+
+				<div class="steps-5">
+					<div class="process-container">
+
+						<div class="process-item" data-aos="fade-up" data-aos-delay="200">
+							<div class="content">
+								<span class="step-number">01</span>
+								<div class="card-body">
+									<div class="step-icon">
+										<i class="bi bi-pencil-square"></i>
+									</div>
+									<div class="step-content">
+										<h3>Add New Job</h3>
+										<p>Log job title, company, platform, JD, and resume used right after applying.
+										</p>
+									</div>
+								</div>
+							</div>
+						</div><!-- End Process Item -->
+
+						<div class="process-item" data-aos="fade-up" data-aos-delay="300">
+							<div class="content">
+								<span class="step-number">02</span>
+								<div class="card-body">
+									<div class="step-icon">
+										<i class="bi bi-journal-check"></i>
+									</div>
+									<div class="step-content">
+										<h3>Track Status</h3>
+										<p>Update the application as Shortlisted, Rejected, or No Update in one click.
+										</p>
+									</div>
+								</div>
+							</div>
+						</div><!-- End Process Item -->
+
+						<div class="process-item" data-aos="fade-up" data-aos-delay="400">
+							<div class="content">
+								<span class="step-number">03</span>
+								<div class="card-body">
+									<div class="step-icon">
+										<i class="bi bi-bell-fill"></i>
+									</div>
+									<div class="step-content">
+										<h3>Get Reminders</h3>
+										<p>We’ll send weekly reminders for jobs that haven’t received updates yet.</p>
+									</div>
+								</div>
+							</div>
+						</div><!-- End Process Item -->
+
+						<div class="process-item" data-aos="fade-up" data-aos-delay="500">
+							<div class="content">
+								<span class="step-number">04</span>
+								<div class="card-body">
+									<div class="step-icon">
+										<i class="bi bi-bar-chart-line"></i>
+									</div>
+									<div class="step-content">
+										<h3>Review Insights</h3>
+										<p>Every month, review your job search analytics and performance summary.</p>
+									</div>
+								</div>
+							</div>
+						</div><!-- End Process Item -->
+
+					</div>
+				</div>
+
+			</div>
+
+		</section><!-- /How We Work Section -->
+
+		<!-- Services Section (Renamed as Features) -->
+		<section id="services" class="services section">
+			<div class="container section-title" data-aos="fade-up">
+				<h2>Key Features</h2>
+				<p>Everything you need to stay on top of your job hunt</p>
+			</div>
+			<div class="container" data-aos="fade-up" data-aos-delay="100">
+				<div class="row justify-content-center g-5">
+					<div class="col-md-6" data-aos="fade-right" data-aos-delay="100">
+						<div class="service-item">
+							<div class="service-icon">
+								<i class="bi bi-clock-history"></i>
+							</div>
+							<div class="service-content">
+								<h3>Application Timeline</h3>
+								<p>Track your job applications, add applied dates, and view your current job search
+									status at a glance.
+								</p>
+							</div>
+						</div>
+					</div>
+					<div class="col-md-6" data-aos="fade-left" data-aos-delay="100">
+						<div class="service-item">
+							<div class="service-icon">
+								<i class="bi bi-envelope-paper"></i>
+							</div>
+							<div class="service-content">
+								<h3>Email Notifications</h3>
+								<p>Stay updated with regular reminders and monthly summary reports delivered to your
+									inbox.</p>
+							</div>
+						</div>
+					</div>
+					<div class="col-md-6" data-aos="fade-right" data-aos-delay="200">
+						<div class="service-item">
+							<div class="service-icon">
+								<i class="bi bi-ui-checks"></i>
+							</div>
+							<div class="service-content">
+								<h3>Job Status Updates</h3>
+								<p>Manage your job statuses - applied, under review, shortlisted, or rejected - and
+									update them anytime.
+								</p>
+							</div>
+						</div>
+					</div>
+					<div class="col-md-6" data-aos="fade-left" data-aos-delay="200">
+						<div class="service-item">
+							<div class="service-icon">
+								<i class="bi bi-download"></i>
+							</div>
+							<div class="service-content">
+								<h3>Export and Backup</h3>
+								<p>Export your job data as a CSV file so you’ll never lose track, even outside the
+									platform.</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section><!-- /Services Section -->
+
+
+		<!-- Faq Section -->
+		<section id="faq" class="faq section">
+			<div class="container section-title" data-aos="fade-up">
+				<h2>Support & FAQs</h2>
+				<!-- <p>Everything you need to stay on top of your job hunt</p> -->
+			</div>
+			<div class="container" data-aos="fade-up" data-aos-delay="100">
+				<div class="row gy-5">
+					<div class="col-lg-6" data-aos="zoom-out" data-aos-delay="200">
+						<div class="faq-contact-card">
+							<div class="card-icon">
+								<i class="bi bi-question-circle"></i>
+							</div>
+							<div class="card-content">
+								<h3>Need Help or Have Questions?</h3>
+								<p>If you're confused about how job tracking works or need assistance, we're here for
+									you. Choose your
+									preferred way to connect below.</p>
+								<div class="contact-options">
+									<a href="mailto:reddy.venkat.kalyan04@gmail.com" class="contact-option"
+										target="_blank">
+										<i class="bi bi-envelope"></i>
+										<span>Email Support</span>
+									</a>
+									<a href="tel:9776365777" class="contact-option" target="_blank">
+										<i class="bi bi-telephone"></i>
+										<span>Call Us</span>
+									</a>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<div class="col-lg-6" data-aos="fade-up" data-aos-delay="300">
+						<div class="faq-accordion">
+							<div class="faq-item faq-active">
+								<div class="faq-header">
+									<h3>Why should I track job applications?</h3>
+									<i class="bi bi-chevron-down faq-toggle"></i>
+								</div>
+								<div class="faq-content">
+									<p>Tracking helps you stay organized and follow up on opportunities, especially when
+										applying to
+										multiple companies across various platforms.</p>
+								</div>
+							</div>
+
+							<div class="faq-item">
+								<div class="faq-header">
+									<h3>What details should I log for each job?</h3>
+									<i class="bi bi-chevron-down faq-toggle"></i>
+								</div>
+								<div class="faq-content">
+									<p>Include company name, job title, application date, JD link, resume used, and
+										platform you applied
+										through (e.g., LinkedIn, Naukri).</p>
+								</div>
+							</div>
+
+							<div class="faq-item">
+								<div class="faq-header">
+									<h3>How often will I get reminders?</h3>
+									<i class="bi bi-chevron-down faq-toggle"></i>
+								</div>
+								<div class="faq-content">
+									<p>You will receive weekly reminders for jobs that haven't had a status update and
+										monthly summaries
+										for your overall job hunt progress.</p>
+								</div>
+							</div>
+
+							<div class="faq-item">
+								<div class="faq-header">
+									<h3>Can I access my tracker on mobile?</h3>
+									<i class="bi bi-chevron-down faq-toggle"></i>
+								</div>
+								<div class="faq-content">
+									<p>Yes! Our platform is fully responsive, so you can view and manage your
+										applications from any
+										device, anytime, anywhere.</p>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section><!-- /Faq Section -->
+
+		<!-- =================== -->
+		<!-- Team Section -->
+		<!-- =================== -->
+		<section id="team" class="team section light-background">
+			<div class="container section-title" data-aos="fade-up">
+				<h2>Team</h2>
+				<p>Meet the legendary trio behind this tracker.</p>
+			</div>
+			<div class="container" data-aos="fade-up" data-aos-delay="100">
+				<div class="row g-5">
+
+					<!-- Team Member 1 -->
+					<div class="col-md-6 col-lg-4" data-aos="zoom-in" data-aos-delay="100">
+						<div class="team-card">
+							<div class="team-image">
+								<img src="assets/img/person/hero.png" class="img-fluid" alt="">
+								<div class="team-overlay">
+									<p>Jack of all trades, master of building job trackers and breaking limits. Sleeps
+										only when bugs do.
+									</p>
+									<div class="team-social">
+										<a href="https://github.com/R-Venkat-Kalyan"><i class="bi bi-github"></i></a>
+										<a href="https://www.linkedin.com/in/reddy-venkat-kalyan-822981225/"><i
+												class="bi bi-linkedin"></i></a>
+										<a href="https://reddyvenkatkalyan.netlify.app/" target="_blank"><i
+												class="bi bi-globe"></i></a>
+									</div>
+								</div>
+							</div>
+							<div class="team-content">
+								<h4>Reddy Venkat Kalyan</h4>
+								<span class="position">Full Stack Developer & Project Head</span>
+							</div>
+						</div>
+					</div>
+
+					<!-- Team Member 2 -->
+					<div class="col-md-6 col-lg-4" data-aos="zoom-in" data-aos-delay="200">
+						<div class="team-card">
+							<div class="team-image">
+								<img src="assets/img/person/ChatGPT.jpg" class="img-fluid" alt="">
+								<div class="team-overlay">
+									<p>Powered by AI, obsessed with code perfection. Spotted debugging dreams at 3AM
+										with zero syntax
+										errors.</p>
+									<div class="team-social">
+										<a href="https://chat.openai.com/" target="_blank"><i class="bi bi-cpu"></i></a>
+									</div>
+								</div>
+							</div>
+							<div class="team-content">
+								<h4>ChatGPT</h4>
+								<span class="position">AI Debugger & Code Whisperer</span>
+							</div>
+						</div>
+					</div>
+
+					<!-- Team Member 3 -->
+					<div class="col-md-6 col-lg-4" data-aos="zoom-in" data-aos-delay="300">
+						<div class="team-card">
+							<div class="team-image">
+								<img src="assets/img/person/Copilot.jpg" class="img-fluid" alt="">
+								<div class="team-overlay">
+									<p>Designed half the UI in its sleep. Took two seconds to align 45 buttons. Hates
+										inconsistent spacing
+										more than errors.</p>
+									<div class="team-social">
+										<a href="https://copilot.microsoft.com/" target="_blank"><i
+												class="bi bi-microsoft"></i></a>
+									</div>
+								</div>
+							</div>
+							<div class="team-content">
+								<h4>Microsoft Copilot</h4>
+								<span class="position">UI/UX Designer & Visual Guru</span>
+							</div>
+						</div>
+					</div>
+
+				</div>
+			</div>
+		</section><!-- /Team Section -->
+
+
+		<!-- Contact Section -->
+		<section id="contact" class="contact section">
+			<!-- Section Title -->
+			<div class="container section-title" data-aos="fade-up">
+				<h2>Contact</h2>
+				<p>Have a suggestion, feedback, or need help using the tracker? Reach out anytime!</p>
+			</div>
+
+			<div class="container" data-aos="fade-up" data-aos-delay="100">
+
+				<!-- Alert Box for Feedback -->
+				<div th:if="${successMessage}"
+					class="alert alert-success alert-dismissible fade show text-center fw-bold bg-success text-white p-3 mb-4 rounded"
+					role="alert">
+					<i class="bi bi-check-circle-fill me-2"></i> <span th:text="${successMessage}"></span>
+					<button type="button" class="btn-close btn-close-white" data-bs-dismiss="alert"
+						aria-label="Close"></button>
+				</div>
+
+				<div class="row gy-4 mb-5">
+					<!-- Email Support -->
+					<div class="col-lg-6" data-aos="fade-up" data-aos-delay="100">
+						<div class="info-card">
+							<div class="icon-box"><i class="bi bi-envelope-at-fill"></i></div>
+							<h3>Email Support</h3>
+							<p><a href="mailto:reddy.venkat.kalyan04@gmail.com">reddy.venkat.kalyan04@gmail.com</a></p>
+						</div>
+					</div>
+
+					<!-- Call Us -->
+					<div class="col-lg-6" data-aos="fade-up" data-aos-delay="200">
+						<div class="info-card">
+							<div class="icon-box"><i class="bi bi-phone-fill"></i></div>
+							<h3>Call Us</h3>
+							<p><a href="tel:+919776365777">+91 97763 65777</a></p>
+						</div>
+					</div>
+				</div>
+
+				<!-- Contact Form -->
+				<div class="row">
+					<div class="col-lg-12">
+						<div class="form-wrapper" data-aos="fade-up" data-aos-delay="300">
+							<form action="/submit-contact" method="post" class="php-email-form">
+
+								<!-- Name & Email -->
+								<div class="row">
+									<div class="col-md-6 form-group">
+										<div class="input-group">
+											<span class="input-group-text"><i class="bi bi-person"></i></span>
+											<input type="text" name="name" class="form-control" placeholder="Your Name*"
+												required>
+										</div>
+									</div>
+									<div class="col-md-6 form-group">
+										<div class="input-group">
+											<span class="input-group-text"><i class="bi bi-envelope"></i></span>
+											<input type="email" name="email" class="form-control"
+												placeholder="Email Address*" required>
+										</div>
+									</div>
+								</div>
+
+								<!-- Topic & Subject -->
+								<div class="row mt-3">
+									<div class="col-md-6 form-group">
+										<div class="input-group">
+											<span class="input-group-text"><i class="bi bi-flag"></i></span>
+											<select name="topic" class="form-control" required>
+												<option value="">Choose a Topic*</option>
+												<option value="Feedback">Feedback / Suggestion</option>
+												<option value="Issue">Report an Issue</option>
+												<option value="Feature">Request a Feature</option>
+												<option value="Other">Other</option>
+											</select>
+										</div>
+									</div>
+									<div class="col-md-6 form-group">
+										<div class="input-group">
+											<span class="input-group-text"><i class="bi bi-chat-text"></i></span>
+											<input type="text" name="subject" class="form-control"
+												placeholder="Subject*" required>
+										</div>
+									</div>
+								</div>
+
+								<!-- Message -->
+								<div class="form-group mt-3">
+									<div class="input-group">
+										<span class="input-group-text"><i class="bi bi-pencil"></i></span>
+										<textarea name="message" class="form-control" rows="6"
+											placeholder="Your Message*" required></textarea>
+									</div>
+								</div>
+
+								<!-- Submit -->
+								<div class="text-center mt-4">
+									<button type="submit" class="btn btn-primary px-4">Send Message</button>
+								</div>
+							</form>
+						</div>
+					</div>
+				</div>
+
+			</div>
+		</section>
+
+
+
+	</main>
+	<footer class="footer-dark">
+		<div class="container py-5">
+			<div class="row">
+				<!-- Branding -->
+				<div class="col-md-6 col-lg-4 mb-4">
+					<h5 class="text-success mb-3">JobTrackrly</h5>
+					<p>Track all your job applications in one place. Stay updated, stay organized, and never lose your
+						application history again.</p>
+				</div>
+
+				<!-- Quick Links -->
+				<div class="col-md-6 col-lg-2 mb-4">
+					<h6 class="footer-heading">Quick Links</h6>
+					<ul class="list-unstyled">
+						<li><a href="#about" class="footer-link"><i class="bi bi-info-circle me-1"></i> About</a></li>
+						<li><a href="#how-we-work" class="footer-link"><i class="bi bi-lightbulb me-1"></i> How It
+								Works</a></li>
+						<li><a href="#faq" class="footer-link"><i class="bi bi-question-circle me-1"></i> FAQ</a></li>
+						<li><a href="#contact" class="footer-link"><i class="bi bi-envelope me-1"></i> Contact</a></li>
+					</ul>
+				</div>
+
+				<!-- Get in Touch -->
+				<div class="col-md-6 col-lg-3 mb-4">
+					<h6 class="footer-heading">Get in Touch</h6>
+					<ul class="list-unstyled">
+						<!-- <li><a href="mailto:reddy.venkat.kalyan04@gmail.com" class="footer-link"><i class="bi bi-envelope-paper me-1"></i> Email</a></li> -->
+						<li><a href="tel:+919776365777" class="footer-link" target="_blank"><i
+									class="bi bi-telephone me-1"></i> Call</a></li>
+						<li><a href="https://github.com/R-Venkat-Kalyan" class="footer-icon" target="_blank"><i
+									class="bi bi-github"></i> GitHub</a></li>
+						<li><a href="https://www.linkedin.com/in/reddy-venkat-kalyan-822981225/" class="footer-icon"
+								target="_blank"><i class="bi bi-linkedin"></i> LinkedIn</a></li>
+						<li><a href="https://reddyvenkatkalyan.netlify.app/" class="footer-link" target="_blank"><i
+									class="bi bi-globe me-1"></i> Portfolio</a></li>
+					</ul>
+				</div>
+
+				<!-- Other Projects -->
+				<div class="col-md-6 col-lg-3 mb-4">
+					<h6 class="footer-heading">Our Other Projects</h6>
+					<ul class="list-unstyled">
+						<li><a href="https://taskprompter-fe.vercel.app/" class="footer-link" target="_blank"><i
+									class="bi bi-alarm me-1"></i> Task Prompter</a></li>
+						<li><a href="https://rvks-notes.netlify.app/" class="footer-link" target="_blank"><i
+									class="bi bi-journal-code me-1"></i> Notes App</a></li>
+						<li><a href="https://pdfsquare959.pythonanywhere.com/" class="footer-link" target="_blank"><i
+									class="bi bi-file-earmark-pdf me-1"></i> PDF Square</a></li>
+						<li><a href="https://cms-front-end-pearl.vercel.app/" class="footer-link" target="_blank"><i
+									class="bi bi-person-lines-fill me-1"></i> Counseling System</a></li>
+					</ul>
+				</div>
+			</div>
+
+			<hr class="bg-secondary">
+
+			<div class="text-center small mt-3">
+				<span>© <span id="year"></span> Designed by <a href="https://reddyvenkatkalyan.netlify.app/"
+						class="footer-link" target="_blank">Reddy Venkat Kalyan</a>.<br> All Rights Reserved.</span>
+			</div>
+		</div>
+	</footer>
+
+
+	<!-- Scroll Top -->
+	<a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i
+			class="bi bi-arrow-up-short"></i></a>
+
+	<!-- Preloader -->
+	<div id="preloader"></div>
+
+	<!-- Vendor JS Files -->
+	<script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+	<script src="assets/vendor/php-email-form/validate.js"></script>
+	<script src="assets/vendor/aos/aos.js"></script>
+	<script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
+	<script src="assets/vendor/imagesloaded/imagesloaded.pkgd.min.js"></script>
+	<script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+	<script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
+
+	<!-- Main JS File -->
+	<script src="assets/js/main.js"></script>
+
+</body>
+
+</html>

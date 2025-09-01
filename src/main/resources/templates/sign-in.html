@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>Login - JobTrackrly</title>
+	<link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+	<link href="assets/img/favicon.png" rel="icon">
+	<style>
+		input::-ms-reveal,
+		input::-ms-clear {
+			display: none;
+		}
+
+		@keyframes slide-in {
+			0% {
+				opacity: 0;
+				transform: translateY(-20px) translateX(50%);
+			}
+
+			100% {
+				opacity: 1;
+				transform: translateY(0) translateX(0);
+			}
+		}
+
+		.animate-slide-in {
+			animation: slide-in 0.5s ease-out;
+		}
+	</style>
+</head>
+
+<body class="bg-cover bg-no-repeat bg-center" style="background-image: url('./form-background.jpg');">
+
+	<div class="min-h-screen w-full flex items-center justify-center p-4 py-12">
+		<div class="w-full max-w-md relative">
+			<div class="bg-white rounded-2xl shadow-xl overflow-hidden">
+
+				<!-- Toast Notification -->
+				<div th:if="${toastMessage}" id="toast"
+					class="fixed top-5 right-5 z-50 flex items-start p-4 bg-white border-l-4 border-green-500 shadow-lg rounded-md animate-slide-in w-96">
+					<div class="flex-shrink-0 mt-1 text-green-600">
+						<i class="fa-solid fa-circle-check text-2xl"></i>
+					</div>
+					<div class="ml-4">
+					<!--	<p class="text-sm font-semibold text-gray-800 mb-1">Success</p> -->
+						<p class="text-sm text-gray-600" th:text="${toastMessage}">Job successfully added!</p>
+					</div>
+					<button onclick="dismissToast()"
+						class="ml-auto text-gray-500 hover:text-gray-800 text-lg font-bold px-2">×</button>
+				</div>
+
+				<!-- Form Container -->
+				<div class="p-8">
+					<!-- Header -->
+					<div class="text-center mb-8">
+						<h2 class="text-3xl font-bold text-gray-800">Welcome Back!</h2>
+						<p class="text-gray-500 mt-2">Login to your JobTrackrly dashboard</p>
+					</div>
+
+					<!-- Login Form -->
+					<form method="get" action="/userLogin">
+						<!-- Email -->
+						<div class="mb-5 relative">
+							<label for="email" class="block text-sm font-medium text-gray-700 mb-1">Email
+								Address</label>
+							<div class="relative">
+								<input type="email" id="email" name="email" placeholder="job.seeker@gmail.com"
+									class="pl-10 w-full px-4 py-3 bg-gray-50 border border-gray-200 text-gray-700 rounded-lg"
+									required />
+								<div class="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400">📧</div>
+							</div>
+						</div>
+
+						<!-- Password -->
+						<div class="relative mb-1">
+							<label for="password" class="block text-sm font-medium text-gray-700 mb-1">Password</label>
+							<div class="relative">
+								<input type="password" id="password" name="password" placeholder="••••••••"
+									class="pl-10 pr-10 w-full px-4 py-3 bg-gray-50 border border-gray-200 text-gray-700 rounded-lg"
+									required />
+								<div class="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400">🔒</div>
+								<button type="button" onclick="togglePassword('password')"
+									class="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-600 text-sm">👁️</button>
+							</div>
+						</div>
+
+						<!-- Forgot Password -->
+						<div class="mb-6 text-right">
+							<a href="#"
+								class="text-sm text-indigo-600 font-medium hover:text-indigo-800 transition">Forgot
+								Password?</a>
+						</div>
+
+						<!-- Submit Button -->
+						<button type="submit"
+							class="w-full bg-gradient-to-r from-indigo-600 to-purple-600 text-white font-semibold py-3 px-4 rounded-lg shadow-md hover:from-indigo-700 hover:to-purple-700 transition">
+							Login to JobTrackrly
+						</button>
+					</form>
+
+					<!-- Footer Link -->
+					<div class="mt-6 text-center">
+						<p class="text-sm text-gray-600">
+							Don’t have an account?
+							<a href="/sign-up" class="text-indigo-600 font-medium hover:text-indigo-800">Register
+								here</a>
+						</p>
+					</div>
+				</div>
+
+			</div>
+		</div>
+	</div>
+
+	<!-- JS for password visibility toggle -->
+	<script>
+		function togglePassword(id) {
+			const input = document.getElementById(id);
+			input.type = input.type === 'password' ? 'text' : 'password';
+		}
+
+		function dismissToast() {
+			const toast = document.getElementById("toast");
+			if (toast) toast.style.display = "none";
+		}
+
+		// Auto-dismiss after 4 seconds
+		window.onload = () => {
+			setTimeout(dismissToast, 6000);
+		};
+	</script>
+
+</body>
+
+</html>

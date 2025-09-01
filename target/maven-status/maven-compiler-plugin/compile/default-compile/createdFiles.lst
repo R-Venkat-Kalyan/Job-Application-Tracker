@@ -1,0 +1,14 @@
+com\example\Job_Application_Tracker\repository\RegisterUserRepository.class
+com\example\Job_Application_Tracker\repository\ContactMessageRepository.class
+com\example\Job_Application_Tracker\repository\ApplicationFeedbackRepository.class
+com\example\Job_Application_Tracker\JobApplicationTrackerApplication.class
+com\example\Job_Application_Tracker\service\RegisterUsersService.class
+com\example\Job_Application_Tracker\entity\ApplicationFeedback.class
+com\example\Job_Application_Tracker\entity\JobApplication.class
+com\example\Job_Application_Tracker\repository\JobApplicationRepository.class
+com\example\Job_Application_Tracker\controller\RouteController.class
+com\example\Job_Application_Tracker\entity\RegisterUsers.class
+com\example\Job_Application_Tracker\service\JobApplicationScheduler.class
+com\example\Job_Application_Tracker\controller\JobApplicationController.class
+com\example\Job_Application_Tracker\controller\SecurityConfig.class
+com\example\Job_Application_Tracker\entity\ContactMessage.class

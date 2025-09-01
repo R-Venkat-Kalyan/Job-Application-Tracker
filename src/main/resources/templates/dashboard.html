@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>JobTrackrly Dashboard</title>
+	<script src="https://cdn.tailwindcss.com"></script>
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet" />
+	<link href="assets/img/favicon.png" rel="icon" />
+	<style>
+		.brand-color {
+			color: #88f572;
+		}
+
+		.bg-brand {
+			background-color: #88f572;
+		}
+
+		.hover-bg-brand:hover {
+			background-color: #76e55b;
+		}
+
+		@keyframes fade-in-down {
+			from {
+				opacity: 0;
+				transform: translateY(-1rem);
+			}
+
+			to {
+				opacity: 1;
+				transform: translateY(0);
+			}
+		}
+
+		.animate-fade-in-down {
+			animation: fade-in-down 0.5s ease-out;
+		}
+	</style>
+</head>
+
+<body class="flex flex-col w-screen h-screen bg-gray-100">
+
+	<!-- Navbar -->
+	<nav class="bg-gray-900 fixed w-full z-20 top-0 border-b border-gray-600">
+		<div class="max-w-screen-xl mx-auto px-4 py-3 flex justify-between items-center">
+			<!-- Logo -->
+			<a href="index.html" class="logo d-flex align-items-center me-auto me-xl-0 text-white text-decoration-none">
+				<h1 class="sitename" style="font-family: 'Poppins', sans-serif; font-weight: 600; color: #88f572;">
+					JobTrackrly</h1><span style="color: #fff;"></span>
+			</a>
+			<div class="flex items-center space-x-3">
+				<!-- Mobile Menu Button -->
+				<button id="menu-btn" class="lg:hidden text-white text-2xl focus:outline-none">
+					<i class="fa-solid fa-bars"></i>
+				</button>
+				<!-- Logout (Desktop only) -->
+				<a href="/log-out" class="hidden lg:block">
+					<button class="bg-brand hover-bg-brand text-black px-4 py-2 rounded-lg text-sm font-semibold">
+						Logout
+					</button>
+				</a>
+			</div>
+		</div>
+	</nav>
+
+	<!-- Sidebar + Main -->
+	<div class="flex flex-row pt-16 h-full">
+
+		<!-- Toast Notification -->
+		<div th:if="${toastMessage}" id="toast"
+			class="fixed top-5 right-5 z-50 flex items-start p-4 bg-white border-l-4 border-green-500 shadow-lg rounded-md animate-fade-in-down w-96">
+			<div class="flex-shrink-0 mt-1 text-green-600">
+				<i class="fa-solid fa-circle-check text-2xl"></i>
+			</div>
+			<div class="ml-4">
+				<p class="text-sm text-gray-600" th:text="${toastMessage}">Job successfully added!</p>
+			</div>
+			<button onclick="dismissToast()"
+				class="ml-auto text-gray-500 hover:text-gray-800 text-lg font-bold px-2">×</button>
+		</div>
+
+		<!-- Sidebar -->
+		<aside id="sidebar"
+			class="fixed lg:static top-16 left-0 w-64 bg-gray-900 text-gray-200 h-[calc(100vh-4rem)] flex flex-col justify-between p-4 transform -translate-x-full lg:translate-x-0 transition-transform duration-300 ease-in-out z-30">
+
+			<!-- Navigation Links -->
+			<div class="space-y-2 font-semibold text-sm">
+				<a href="/dashboard" class="flex items-center px-5 py-3 rounded-lg hover:bg-gray-800"><i
+						class="fa-solid fa-chart-line mr-3 w-5"></i> Dashboard</a>
+				<a href="/add-job" class="flex items-center px-5 py-3 rounded-lg hover:bg-gray-800"><i
+						class="fa-solid fa-plus-circle mr-3 w-5"></i> Add New Job</a>
+				<a href="/applied-jobs" class="flex items-center px-5 py-3 rounded-lg hover:bg-gray-800"><i
+						class="fa-solid fa-list-check mr-3 w-5"></i> All Applied Jobs</a>
+				<a href="/shortlisted" class="flex items-center px-5 py-3 rounded-lg hover:bg-gray-800"><i
+						class="fa-solid fa-check-circle mr-3 w-5"></i> Shortlisted Jobs</a>
+				<a href="/rejected" class="flex items-center px-5 py-3 rounded-lg hover:bg-gray-800"><i
+						class="fa-solid fa-xmark-circle mr-3 w-5"></i> Rejected Jobs</a>
+				<a href="/no-update" class="flex items-center px-5 py-3 rounded-lg hover:bg-gray-800"><i
+						class="fa-solid fa-question-circle mr-3 w-5"></i> No Update Jobs</a>
+				<a href="/update-profile" class="flex items-center px-5 py-3 rounded-lg hover:bg-gray-800"><i
+						class="fa-solid fa-user-gear mr-3 w-5"></i> Update Profile</a>
+			</div>
+
+			<!-- Bottom Section -->
+			<div class="space-y-4">
+				<!-- Logout (Mobile only) -->
+				<a href="/log-out" class="block lg:hidden">
+					<button
+						class="w-full bg-brand hover-bg-brand text-black px-4 py-3 rounded-lg text-sm font-semibold">
+						Logout
+					</button>
+				</a>
+				<!-- Feedback Button -->
+				<a href="/feedback"
+					class="flex items-center px-5 py-3 rounded-lg bg-gradient-to-r from-blue-500 to-green-500 text-white font-bold shadow-md hover:shadow-xl transition-transform transform hover:scale-105 relative whitespace-nowrap">
+					<i class="fa-solid fa-comment-dots mr-3 w-5 text-base"></i> Feedback
+					<span
+						class="absolute top-1 right-2 bg-red-600 text-white text-xs font-bold px-2 py-0.5 rounded-full animate-bounce">New!</span>
+				</a>
+			</div>
+		</aside>
+
+		<!-- Main Content -->
+		<main class="flex-grow p-6 overflow-y-auto">
+			<!-- Welcome -->
+			<h1 class="text-3xl font-extrabold text-gray-800 mb-6 text-center tracking-wide">
+				👋 <i>Welcome back to JobTrackrly</i>
+			</h1>
+
+			<!-- Account Summary -->
+			<div class="bg-white border-l-4 border-[#88f572] shadow-lg rounded-xl p-6 mb-10 transition hover:shadow-xl">
+				<h2 class="text-2xl font-bold text-gray-800 mb-2">Your Account Summary</h2>
+				<div class="text-gray-600 space-y-1 leading-relaxed">
+					<p><strong>User Name:</strong> <span th:text="${userName}"></span></p>
+					<p><strong>Email:</strong> <span th:text="${userMail}"></span></p>
+					<p><strong>Status:</strong> <span class="text-green-600 font-medium">Active</span></p>
+				</div>
+			</div>
+
+			<!-- Section Title -->
+			<div class="text-center mb-6">
+				<h2 class="text-2xl font-semibold text-gray-700">📊 Your Job Application Overview</h2>
+				<p class="text-gray-500 mt-1">Here's how your job hunt is progressing</p>
+			</div>
+
+			<!-- Job Statistics Cards -->
+			<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+				<div class="bg-white p-6 rounded-xl shadow-md hover:shadow-lg transition border-t-4 border-indigo-500">
+					<div class="flex items-center space-x-4">
+						<div class="text-4xl text-indigo-500"><i class="fa-solid fa-briefcase"></i></div>
+						<div>
+							<p class="text-sm text-gray-500">Applied Jobs</p>
+							<h2 class="text-2xl font-bold text-gray-800" th:text="${totalJobs}"></h2>
+						</div>
+					</div>
+				</div>
+
+				<div class="bg-white p-6 rounded-xl shadow-md hover:shadow-lg transition border-t-4 border-green-500">
+					<div class="flex items-center space-x-4">
+						<div class="text-4xl text-green-500"><i class="fa-solid fa-check-circle"></i></div>
+						<div>
+							<p class="text-sm text-gray-500">Shortlisted</p>
+							<h2 class="text-2xl font-bold text-gray-800" th:text="${shortlistedJobs}"></h2>
+						</div>
+					</div>
+				</div>
+
+				<div class="bg-white p-6 rounded-xl shadow-md hover:shadow-lg transition border-t-4 border-red-500">
+					<div class="flex items-center space-x-4">
+						<div class="text-4xl text-red-500"><i class="fa-solid fa-xmark-circle"></i></div>
+						<div>
+							<p class="text-sm text-gray-500">Rejected</p>
+							<h2 class="text-2xl font-bold text-gray-800" th:text="${rejectedJobs}"></h2>
+						</div>
+					</div>
+				</div>
+
+				<div class="bg-white p-6 rounded-xl shadow-md hover:shadow-lg transition border-t-4 border-yellow-400">
+					<div class="flex items-center space-x-4">
+						<div class="text-4xl text-yellow-500"><i class="fa-solid fa-question-circle"></i></div>
+						<div>
+							<p class="text-sm text-gray-500">No Update</p>
+							<h2 class="text-2xl font-bold text-gray-800" th:text="${noUpdateJobs}"></h2>
+						</div>
+					</div>
+				</div>
+			</div>
+		</main>
+	</div>
+
+	<script>
+		function dismissToast() {
+			const toast = document.getElementById("toast");
+			if (toast) toast.style.display = "none";
+		}
+		window.onload = () => {setTimeout(dismissToast, 4000);};
+
+		// Sidebar toggle for mobile
+		const menuBtn = document.getElementById("menu-btn");
+		const sidebar = document.getElementById("sidebar");
+		menuBtn.addEventListener("click", () => {
+			sidebar.classList.toggle("-translate-x-full");
+		});
+	</script>
+</body>
+
+</html>
