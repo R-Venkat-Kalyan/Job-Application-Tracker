@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+  <title>404 • Where are you going?</title>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Quicksand:wght@600&family=Manrope:wght@400;700&display=swap"
+    rel="stylesheet"
+  />
+  <link href="assets/img/favicon.png" rel="icon">
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: "Manrope", sans-serif;
+      /* Dark shiny background */
+      background: radial-gradient(circle at top left, #1e1e2f, #12121d 70%);
+      overflow: hidden;
+    }
+
+    /* Subtle animated shimmering effect on background */
+    body::before {
+      content: "";
+      position: fixed;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      pointer-events: none;
+      background: radial-gradient(circle at 25% 25%, rgba(255, 214, 170, 0.15), transparent 60%), 
+                  radial-gradient(circle at 75% 75%, rgba(255, 182, 150, 0.12), transparent 70%);
+      animation: shimmerBG 15s linear infinite;
+      z-index: 0;
+      filter: blur(60px);
+    }
+
+    @keyframes shimmerBG {
+      0% { transform: translate(0,0) scale(1); }
+      50% { transform: translate(15%, 15%) scale(1.1);}
+      100% { transform: translate(0,0) scale(1); }
+    }
+
+    .box {
+      position: relative;
+      background: rgba(255, 255, 255, 0.95);
+      border-radius: 22px;
+      box-shadow:
+        0 12px 48px rgba(54, 12, 151, 0.42),
+        0 2.5px 30px rgba(247, 186, 42, 0.29),
+        0 1px 5px rgba(247, 186, 42, 0.22);
+      padding: 54px 30px 40px 30px;
+      text-align: center;
+      max-width: 330px;
+      min-width: 260px;
+      z-index: 1;
+      animation: fadeInCard 0.8s ease forwards;
+      backdrop-filter: saturate(150%) blur(12px);
+      border: 1.5px solid rgba(255, 191, 94, 0.4);
+    }
+
+    @keyframes fadeInCard {
+      from { opacity: 0; transform: translateY(15px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .num404 {
+      font-family: "Quicksand", sans-serif;
+      font-size: 4.8rem;
+      font-weight: 700;
+      color: #f7ba2a;
+      margin-bottom: 0px;
+      animation: popwobble 1.2s cubic-bezier(0.17, 0.67, 0.83, 0.67);
+      text-shadow: 0 0 8px #ffbb50;
+    }
+
+    @keyframes popwobble {
+      0% {
+        transform: scale(0.85) rotate(-7deg);
+      }
+      40% {
+        transform: scale(1.1) rotate(7deg);
+      }
+      65% {
+        transform: scale(0.97) rotate(-3deg);
+      }
+      100% {
+        transform: scale(1) rotate(0);
+      }
+    }
+
+    .ghost {
+      font-size: 2.8rem;
+      animation: floatghost 3s infinite cubic-bezier(0.45, 0.01, 0.51, 1.01);
+      margin-top: -22px;
+      text-shadow: 0 0 5px #f7ba2aaa;
+    }
+
+    @keyframes floatghost {
+      0%,
+      100% {
+        transform: translateY(-8px);
+      }
+      50% {
+        transform: translateY(10px);
+      }
+    }
+
+    .headline {
+      font-family: "Quicksand", sans-serif;
+      font-size: 1.25rem;
+      color: #b27700;
+      margin-top: 1px;
+      font-weight: 700;
+      letter-spacing: 0.01em;
+      text-shadow: 0 0 5px #f7ba2a95;
+    }
+
+    .roast {
+      margin-top: 15px;
+      margin-bottom: 10px;
+      color: #2a230a;
+      font-size: 1.07rem;
+      font-family: "Manrope", sans-serif;
+      font-weight: 700;
+      background: #fff2d4;
+      border-radius: 6px;
+      padding: 6px 0;
+      animation: fadein 0.9s;
+      box-shadow: 0 0 10px #f7ba2a6e;
+    }
+
+    @keyframes fadein {
+      0% {
+        opacity: 0;
+        transform: translateY(16px);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .desc {
+      color: #725d00;
+      font-size: 0.98rem;
+      opacity: 0.94;
+      margin-bottom: 18px;
+      margin-top: 12px;
+      animation: fadein 1.3s cubic-bezier(0.5, 0.01, 0.5, 1.01);
+    }
+
+    .redirect {
+      display: inline-block;
+      margin-top: 11px;
+      margin-bottom: 0;
+      font-family: "Quicksand", sans-serif;
+      font-size: 1.07rem;
+      font-weight: 700;
+      padding: 11px 26px;
+      color: #fff;
+      background: linear-gradient(90deg, #292cdf, #4bf876);
+      border-radius: 190px;
+      text-decoration: none;
+      box-shadow: 0 2px 15px #2b1ee4cc;
+      transition: transform 0.19s, box-shadow 0.19s, background 0.19s;
+      border: none;
+      cursor: pointer;
+      outline: none;
+      animation: buttonfloat 2.2s infinite cubic-bezier(0.74, 0.05, 0.96, 0.87);
+    }
+    
+    .redirect:hover {
+      background: linear-gradient(90deg, #5b5efc, #89ffa7);
+      transform: scale(1.06) translateY(-2px) rotate(-2.5deg);
+      box-shadow: 0 6px 32px #7348b8cc;
+    }
+
+    @keyframes buttonfloat {
+      0%, 100% {
+        transform: translateY(0) scale(1);
+      }
+      50% {
+        transform: translateY(-2.5px) scale(1.049);
+      }
+    }
+
+    .note {
+      display: block;
+      color: #a18200;
+      margin-top: 13px;
+      font-size: 0.93rem;
+      opacity: 0.77;
+      text-shadow: 0 0 3px #ffdb6b88;
+    }
+
+    @media (max-width: 400px) {
+      .box {
+        padding: 32px 6px 24px 6px;
+        min-width: 0;
+      }
+      .num404 {
+        font-size: 3rem;
+      }
+      .headline {
+        font-size: 1.07rem;
+      }
+      .note {
+        font-size: 0.88rem;
+      }
+      .desc {
+        font-size: 0.92rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="box">
+    <div class="num404">404</div>
+    <div class="ghost">👻</div>
+    <div class="headline">Page Not Found</div>
+    <div class="roast">
+      Bro, this is just a pretty face—zero brains behind it. 😅
+    </div>
+    <div class="desc">
+      You seriously thought there’s a back-end on free hosting? Rookie move.
+      But hey, I get it—you want the <i>real</i> stuff.
+    </div>
+    <a href="https://jobtrackrly-resumes.onrender.com" class="redirect"
+      >Go to Full App 🔗</a
+    >
+    <span class="note"
+      >Longer loading time ahead! The real site is so slow, you might finish a
+      cup of coffee before it loads ☕</span
+    >
+  </div>
+</body>
+</html>
