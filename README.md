@@ -65,7 +65,7 @@ Make sure you have the following installed:
 ### **Installation**
 
 1. **Clone the repository**:  
-git clone https://github.com/your-username/JobTrackrly.git
+git clone https://github.com/R-Venkat-Kalyan/Job-Application-Tracker
 
 2. **Install backend dependencies**:  
 mvn install
